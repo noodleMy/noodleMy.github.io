@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="./css/导航栏.css" />
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      html,
+      body {
+        width: 100%;
+        min-width: 1250px;
+        overflow-x: hidden; /* 减去溢出的部分,阻止横向滚动条的出现 */
+      }
+      .da_canvas {
+        position: absolute;
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #000000;
+      }
+      #canvas {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+      .empty_box {
+        width: 100%;
+        height: 120px;
+      }
+      /* section */
+      .content1 {
+        position: relative;
+        z-index: 0;
+        width: 80%;
+        background-color: rgba(255, 255, 255, 0.2);
+        margin: 0px auto;
+        border-radius: 20px;
+        margin-bottom: 80px;
+        box-shadow: 12px 12px 50px rgba(0, 0, 0, 0.6);
+      }
+
+      .box3 {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+      }
+
+      .box3_1 {
+        width: 20%;
+        height: 420px;
+        background-color: rgba(255, 250, 250, 0.3);
+        border-radius: 20px;
+      }
+
+      .box3_2 {
+        width: 53%;
+        height: 420px;
+        background-color: rgba(255, 250, 250, 0.3);
+        border-radius: 20px;
+        margin: 0px 15px;
+      }
+
+      .box3_3 {
+        width: 27%;
+        height: 420px;
+        background-color: rgba(255, 250, 250, 0.3);
+        border-radius: 20px;
+      }
+
+      .box4 {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .box4_1 {
+        width: calc(73% + 15px);
+        height: 560px;
+        background-color: rgba(255, 250, 250, 0.3);
+        border-radius: 20px;
+      }
+
+      .box4_2 {
+        width: 27%;
+        height: 560px;
+        background-color: rgba(255, 250, 250, 0.3);
+        border-radius: 20px;
+        margin-left: 15px;
+        opacity: 0.3;
+      }
+
+      .footer2 {
+        /* text-align: center;
+				
+				height: 150px;
+				padding-top: 70px; */
+        width: 100vw;
+        height: 40vh;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.2);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .footer2 p {
+        opacity: 0.8;
+        line-height: 26px;
+        color: snow;
+      }
+
+      /* 第一个白块 */
+      .box3_11 {
+        width: 80px;
+        height: 80px;
+        border-radius: 100px;
+        background-image: url(img/Cache_-75f02e1cfd35a250..jpg);
+        background-repeat: no-repeat;
+        background-size: 120%;
+        background-position: top left;
+        margin: 15px auto;
+        margin-bottom: 12px;
+      }
+
+      .box3_12 {
+        display: flex;
+        width: 80%;
+        margin: 8px auto;
+        justify-content: space-between;
+        white-space: nowrap;
+      }
+
+      .box3_13 {
+        display: flex;
+        width: 72%;
+        margin: 0px auto;
+        justify-content: space-between;
+        white-space: nowrap;
+      }
+
+      .box3_14 {
+        width: 80%;
+        background-color: rgba(28, 192, 118, 0.9);
+        height: 60px;
+        text-align: center;
+        margin: 20px auto;
+        padding: 0px 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .box3_142 {
+        margin: 0px auto;
+        display: flex;
+        align-items: center;
+      }
+
+      .box3_141 {
+        width: 32px;
+        height: 32px;
+        background-image: url(img/logo.png);
+        background-repeat: no-repeat;
+        background-position: left top;
+        background-size: 356%;
+      }
+
+      .box3_14 a {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .box3_14 a:hover {
+        color: rgba(255, 255, 255, 1);
+      }
+
+      .box3_15 {
+        width: 80%;
+        display: flex;
+        justify-content: space-around;
+        margin: 10px auto;
+      }
+
+      .box3_151 {
+        width: 30px;
+        height: 30px;
+        background-image: url(img/github.png);
+        background-repeat: repeat;
+        background-size: 100%;
+      }
+
+      .box3_152 {
+        width: 30px;
+        height: 30px;
+        background-image: url(img/微信.png);
+        background-repeat: none;
+        background-size: 100%;
+      }
+
+      .box3_153 {
+        width: 30px;
+        height: 30px;
+        background-image: url(img/网易云.png);
+        background-repeat: none;
+        background-size: 100%;
+      }
+
+      .box3_154 {
+        width: 30px;
+        height: 30px;
+        background-image: url(img/qq.png);
+        background-repeat: none;
+        background-size: 100%;
+      }
+
+      .box3_16 {
+        width: 40px;
+        height: 40px;
+        border-radius: 100px;
+        margin: 20px auto;
+        background-image: url(img/开关夜1.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;
+      }
+
+      /* 第二个白块 */
+      .box3_21 {
+        width: 28%;
+        font-size: 22px;
+        border-bottom: 2px solid #000000;
+        margin-top: 10px;
+        margin-left: 20px;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+      .box3_22 {
+        width: 90%;
+        height: 184px;
+        display: flex;
+        justify-content: space-around;
+        margin: 0px auto;
+      }
+      .box3_23 {
+        width: 90%;
+        height: 184px;
+        display: flex;
+        justify-content: space-around;
+        margin: 0px auto;
+      }
+      /* 第三个白块 */
+      .box3_311 {
+        width: 80%;
+        height: 240px;
+        margin: 0px auto;
+        background-image: url(img/play.png);
+        background-repeat: no-repeat;
+        background-size: 85%; /*盒子高度固定，溢出的话把背景图片变小 */
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .box3_312 {
+        width: 90px;
+        height: 90px;
+        border-radius: 100px;
+        background-image: url(img/R-C.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+      @media (min-width: 1500px) {
+        .box3_311 {
+          width: 80%;
+          height: 270px;
+        }
+        .box3_312 {
+          width: 120px;
+          height: 120px;
+        }
+      }
+      .box3_33 {
+        width: 70%;
+        height: 55px;
+        background-color: white;
+        border-radius: 18px;
+        box-shadow: 20px 12px 50px rgba(0, 0, 0, 0.4);
+        margin: 0px auto;
+        padding: 0px 10%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      .box3_331 {
+        width: 35px;
+        height: 35px;
+        background-repeat: none;
+        background-image: url(img/上一首.png);
+        background-size: 100%;
+        cursor: pointer;
+      }
+      .box3_332 {
+        width: 35px;
+        height: 35px;
+        background-repeat: none;
+        background-image: url(./img/播放.png);
+        background-size: 100%;
+        cursor: pointer;
+      }
+      .box3_333 {
+        width: 35px;
+        height: 35px;
+        background-repeat: none;
+        background-image: url(img/下一首.png);
+        background-size: 100%;
+        cursor: pointer;
+      }
+      .box3_34 {
+        width: 70%;
+        margin: 0px auto;
+      }
+
+      #volume {
+        display: block;
+        margin: 14px auto;
+        width: 80px;
+        height: 2px;
+        outline: 0;
+        cursor: pointer;
+        box-shadow: 1px 1px 3px 0 #000000;
+      }
+      /* 第四个白块 */
+      .box4_1 ul {
+        list-style: none;
+      }
+
+      .box4_1 ul li {
+        width: 95%;
+        height: 70px;
+        margin: 0px auto;
+        margin-bottom: 2px;
+      }
+
+      .box4_1m {
+        display: flex;
+        margin-bottom: 4px;
+      }
+
+      .box4_1 ul li:hover {
+        background-color: #696969;
+      }
+
+      .box4_11,
+      .box4_21,
+      .box4_31,
+      .box4_41,
+      .box4_51,
+      .box4_61,
+      .box4_71 {
+        width: 65px;
+        height: 60px;
+
+        background-repeat: none;
+        background-position: center;
+        border-radius: 10px;
+        background-size: cover;
+        margin-top: 5px;
+        margin-right: 20px;
+      }
+      .box4_11 {
+        background-image: url(img/R-C.jpg);
+      }
+      .box4_21 {
+        background-image: url(img/closer.jpg);
+      }
+      .box4_31 {
+        background-image: url(img/L3V3LS.jpg);
+      }
+      .box4_41 {
+        background-image: url(./img/Sky.jpg);
+      }
+      .box4_51 {
+        background-image: url(img/海阔天空.jpg);
+      }
+      .box4_61 {
+        background-image: url(img/塞米七.jpg);
+      }
+      .box4_71 {
+        background-image: url(img/白小白.jpg);
+      }
+      .box4_12 {
+        height: 65px;
+      }
+
+      .box4_12 .box4_12p1 {
+        height: 45px;
+        line-height: 45px;
+        font-size: 17px;
+      }
+      .box4_121 {
+        height: 25px;
+        display: flex;
+      }
+      .box4_1211 {
+        height: 20px;
+        width: 20px;
+        background-image: url(img/爱心.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 108%;
+      }
+
+      .box4_1212 {
+        height: 20px;
+        width: 20px;
+        background-image: url(img/hq-line.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 108%;
+        padding-bottom: 0px;
+        margin: 0px 10px;
+      }
+      .box4_121p1 {
+        font-size: 13px;
+        line-height: 21px;
+      }
+
+      /* 下边框 */
+      .box4_13:after {
+        content: "";
+        position: absolute;
+        left: 35px;
+        top: auto;
+        right: auto;
+        height: 1px;
+        width: 45%;
+        background-color: #696969;
+        opacity: 0.6;
+      }
+
+      /* 第五个白块 */
+      .box4_2 {
+        background-image: url(img/1839042613151530339.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+
+      .box4_2 .box4_2p1 {
+        text-align: center;
+        font-size: 35px;
+        height: 80px;
+        line-height: 90px;
+        font-weight: 600;
+        word-spacing: 1px;
+        background-image: linear-gradient(to top right, #f652d1, #27f5ee);
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="da_canvas"><canvas id="canvas"></canvas></div>
+    <div class="nav2">
+      <h1>HXW</h1>
+      <ul class="na">
+        <li class="na1">
+          <div class="na_1 na_1b"></div>
+          <a href="搜索.html">搜索</a>
+        </li>
+        <li class="na1">
+          <div class="na_1 na_2"></div>
+          <a href="首页.html">首页</a>
+        </li>
+        <li class="na1">
+          <div class="na_1 na_3"></div>
+          <a href="文档.html">归档</a>
+        </li>
+        <li class="na1">
+          <div class="na_1 na_4"></div>
+          <a href="音乐.html">音乐</a>
+        </li>
+        <li class="na1">
+          <div class="na_1 na_7"></div>
+          <a href="图片.html">图片</a>
+        </li>
+        <li class="na1">
+          <div class="na_1 na_8"></div>
+          <a href="个人中心.html">个人中心</a>
+        </li>
+      </ul>
+
+      <div class="bugger">
+        <div class="bugger_top"></div>
+        <div class="bugger_center"></div>
+        <div class="bugger_bottom"></div>
+      </div>
+    </div>
+    <!-- 其他写法<nav class="header2">
+			<p>阿能</p>
+			<ul class="ul1">
+				<li>搜索</li>
+				<li>首页</li>
+				<li>归档</li>
+				<li>音乐</li>
+				<li>标签</li>
+				<li>工具</li>
+				<li>图片</li>
+				<li>关于</li>
+			</ul>
+		</nav> -->
+    <div class="empty_box"></div>
+    <section class="content1">
+      <!-- 大块一 -->
+      <div class="box3">
+        <!-- 白块一 -->
+        <div class="box3_1">
+          <div class="box3_11"></div>
+          <p
+            style="
+              text-align: center;
+              font-weight: 600;
+              font-size: 17px;
+              height: 40px;
+              line-height: 30px;
+            "
+          >
+            HXW
+          </p>
+          <div class="box3_12">
+            <p>喜欢</p>
+            <p>数量</p>
+            <p>粉丝</p>
+          </div>
+          <div class="box3_13">
+            <p>07</p>
+            <p>07</p>
+            <p>00</p>
+          </div>
+          <div class="box3_14">
+            <div class="box3_142">
+              <div class="box3_141"></div>
+              <a href="https://y.qq.com/">Follow Me QQ Music</a>
+            </div>
+          </div>
+          <div class="box3_15">
+            <div class="box3_151"></div>
+            <div class="box3_152"></div>
+            <div class="box3_153"></div>
+            <div class="box3_154"></div>
+          </div>
+          <div class="box3_16"></div>
+        </div>
+        <!-- 白块二 -->
+        <div class="box3_2">
+          <div class="box3_21">推荐歌曲</div>
+          <div class="box3_22">
+            <!-- style="border-radius:80px;" -->
+            <video width="48%" height="180" controls="controls">
+              <!-- autoplay="autoplay"自动播放 -->
+              <source src="video/130463230-1-208.mp4" type="video/mp4" />
+            </video>
+            <video width="48%" height="180" controls="controls">
+              <!-- autoplay="autoplay"自动播放 -->
+              <source src="video/185049146-1-208.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="box3_23">
+            <video width="48%" height="180" controls="controls">
+              <!-- autoplay="autoplay"自动播放 -->
+              <source src="video/365745535-1-208.mp4" type="video/mp4" />
+            </video>
+            <video width="48%" height="180" controls="controls">
+              <!-- autoplay="autoplay"自动播放 -->
+              <source src="video/380955095-1-208.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+        <!-- 白块三 -->
+        <div class="box3_3">
+          <div class="box3_31">
+            <div class="box3_311">
+              <div class="box3_312"></div>
+            </div>
+          </div>
+          <div
+            class="box3_35"
+            style="width: 90%; margin: 10px auto; text-align: center"
+          >
+            <p style="font-size: 18px; margin-bottom: 5px">六月的雨</p>
+            <p>胡歌</p>
+          </div>
+          <div class="box3_33">
+            <div class="box3_331"></div>
+            <div class="box3_332"></div>
+            <div class="box3_333"></div>
+          </div>
+          <div class="box3_34">
+            <audio id="audio" src="audio/六月的雨.mp3"></audio>
+          </div>
+          <input
+            type="range"
+            name="volume"
+            id="volume"
+            min="0"
+            max="1"
+            step="0.1"
+            onchange="setVolume()"
+          />
+        </div>
+      </div>
+      <!-- 大块二 -->
+      <div class="box4">
+        <!-- 白块四 -->
+        <div class="box4_1">
+          <p
+            style="
+              text-align: center;
+              color: #000000;
+              font-weight: 600;
+              font-size: 25px;
+              height: 45px;
+              line-height: 45px;
+            "
+          >
+            My Music
+          </p>
+          <ul>
+            <li>
+              <div class="box4_1m">
+                <div class="box4_11"></div>
+                <div class="box4_12">
+                  <p class="box4_12p1">六月的雨</p>
+                  <div class="box4_121">
+                    <div class="box4_1211"></div>
+                    <div class="box4_1212"></div>
+                    <p class="box4_121p1">胡歌</p>
+                  </div>
+                </div>
+              </div>
+              <div class="box4_13"></div>
+            </li>
+            <li>
+              <div class="box4_1m">
+                <div class="box4_21"></div>
+                <div class="box4_12">
+                  <p class="box4_12p1">Closer</p>
+                  <div class="box4_121">
+                    <div class="box4_1211"></div>
+                    <div class="box4_1212"></div>
+                    <p class="box4_121p1">The Chainsmokers</p>
+                  </div>
+                </div>
+              </div>
+              <div class="box4_13"></div>
+            </li>
+            <li>
+              <div class="box4_1m">
+                <div class="box4_31"></div>
+                <div class="box4_12">
+                  <p class="box4_12p1">On A Hill</p>
+                  <div class="box4_121">
+                    <div class="box4_1211"></div>
+                    <div class="box4_1212"></div>
+                    <p class="box4_121p1">L3V3LS</p>
+                  </div>
+                </div>
+              </div>
+              <div class="box4_13"></div>
+            </li>
+            <li>
+              <div class="box4_1m">
+                <div class="box4_41"></div>
+                <div class="box4_12">
+                  <p class="box4_12p1">Sky</p>
+                  <div class="box4_121">
+                    <div class="box4_1211"></div>
+                    <div class="box4_1212"></div>
+                    <p class="box4_121p1">Little End</p>
+                  </div>
+                </div>
+              </div>
+              <div class="box4_13"></div>
+            </li>
+            <li>
+              <div class="box4_1m">
+                <div class="box4_51"></div>
+                <div class="box4_12">
+                  <p class="box4_12p1">海阔天空</p>
+                  <div class="box4_121">
+                    <div class="box4_1211"></div>
+                    <div class="box4_1212"></div>
+                    <p class="box4_121p1">BEYOND</p>
+                  </div>
+                </div>
+              </div>
+              <div class="box4_13"></div>
+            </li>
+            <li>
+              <div class="box4_1m">
+                <div class="box4_61"></div>
+                <div class="box4_12">
+                  <p class="box4_12p1">Tell u everything</p>
+                  <div class="box4_121">
+                    <div class="box4_1211"></div>
+                    <div class="box4_1212"></div>
+                    <p class="box4_121p1">塞米七</p>
+                  </div>
+                </div>
+              </div>
+              <div class="box4_13"></div>
+            </li>
+            <li>
+              <div class="box4_1m">
+                <div class="box4_71"></div>
+                <div class="box4_12">
+                  <p class="box4_12p1">我爱你不问归期</p>
+                  <div class="box4_121">
+                    <div class="box4_1211"></div>
+                    <div class="box4_1212"></div>
+                    <p class="box4_121p1">白小白</p>
+                  </div>
+                </div>
+              </div>
+              <div class="box4_13"></div>
+            </li>
+          </ul>
+        </div>
+        <!-- 白块五 -->
+        <div class="box4_2">
+          <p class="box4_2p1">MUSIC</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer2">
+      <p>2 0 2 1 / 1 0 / 9</p>
+      <p>阿 能</p>
+      <p>播放器 | 音乐</p>
+    </footer>
+  </body>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/音乐播放器.js"></script>
+  <script src="js/导航栏.js"></script>
+  <script src="js/看不懂的.js"></script>
+  <script src="js/给文字加边框及变色.js"></script>
+</html>

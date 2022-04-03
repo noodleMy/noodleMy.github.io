@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="css/导航栏.css" />
+    <link rel="stylesheet" href="css/图片遮罩.css" />
+    <style>
+      * {
+        padding: 0px;
+        margin: 0px;
+      }
+
+      .imgx {
+        display: none;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.2);
+        z-index: 1000;
+      }
+
+      /* body {
+        background-color: #161623;
+      }
+
+      body::before {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-color: chocolate;
+        position: fixed;
+        z-index: -8;
+      } */
+      .da_bj {
+        position: fixed;
+        z-index: -10;
+        width: 100vw;
+        height: 100vh;
+        background-color: #161623;
+      }
+
+      .da_bj::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(#f00, #f0f);
+        clip-path: circle(30% at right 80%);
+        z-index: -7;
+        position: fixed;
+      }
+
+      .da_bj::after {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(#2196f3, #e91e63);
+        clip-path: circle(20% at 10% 10%); /*!!!!!!!!*/
+        position: fixed;
+        z-index: 0;
+      }
+
+      body {
+        position: relative;
+      }
+      .box1 {
+        width: 100%;
+        height: 80vh;
+        position: relative;
+        overflow: hidden;
+      }
+      .box1 h2 {
+        font-size: 6vmin;
+        left: calc(50vw - 3em);
+        position: absolute;
+        bottom: 40vh;
+        color: white;
+        z-index: 2;
+      }
+      .carousel_1 {
+        list-style: none;
+        position: absolute;
+        z-index: 0;
+      }
+      .carousel_1 li {
+        width: 100vw;
+        height: 80vh;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+        float: left;
+      }
+      .carousel_1 .img1 {
+        background-image: url(img/摄影.jpg);
+      }
+      .carousel_1 .img2 {
+        background-image: url(img/学屋.jpg);
+      }
+      .carousel_1 .img3 {
+        background-image: url(img/星空.jpg);
+      }
+      .carousel_1 .img4 {
+        background-image: url(img/路.jpg);
+      }
+      .carousel_1 .img5 {
+        background-image: url(img/日落.jpg);
+      }
+
+      .carousel_2 {
+        position: absolute;
+        z-index: 3;
+        bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        left: calc(50vw - 52px);
+      }
+      .carousel_2 li {
+        width: 20px;
+        height: 20px;
+        border-radius: 10px;
+        opacity: 0.8;
+        list-style: none;
+        margin: 0px 3px;
+      }
+      .li1 {
+        background-color: #808080;
+      }
+
+      .carousel_2 .b_color {
+        background-color: orange;
+      }
+      .box2 {
+        width: 90%;
+        margin: 30px auto;
+        background-color: aquamarine;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.1); /* 玻璃效果 */
+        box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        position: relative;
+      }
+      .box2 h2 {
+        font-size: 4vmin;
+        color: #e5e8ea;
+        opacity: 0.9;
+        text-shadow: 6px 6px 20px rgba(0, 0, 0, 0.9);
+        height: 60px;
+        line-height: 60px;
+        width: 70vw;
+        margin: 20px auto;
+        background-color: rgba(255, 255, 255, 0.1); /* 玻璃效果 */
+        box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+      }
+      .box21 {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        background-color: rgba(255, 255, 255, 0.1); /* 玻璃效果 */
+        box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        padding-top: 20px;
+        margin-bottom: 40px;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      .box21 .img {
+        position: relative;
+        width: 400px;
+        height: 240px;
+        background-color: bisque;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.1); /* 玻璃效果 */
+        box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s ease-in-out;
+      }
+
+      .box21 .img:hover {
+        transform: scale(1.05);
+      }
+      .box21 .img img {
+        display: block;
+        width: 100%;
+        transition: 0.3s ease-in-out;
+      }
+      .box21 .img img:hover {
+        transform: scale(1.1);
+      }
+      .box22 {
+        width: 100%;
+        margin-bottom: 50px;
+        display: flex;
+        justify-content: center;
+        background-color: rgba(255, 255, 255, 0.1); /* 玻璃效果 */
+        box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .box22 .k_img {
+        background-color: aliceblue;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.1); /* 玻璃效果 */
+        box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        height: 350px;
+        transition: 0.6s ease-in-out;
+        /* float: left;宽度不够不能用 */
+      }
+      /* .box22 .k_img .img:hover {
+        display: block;
+        width: 100%;
+      } */
+
+      .box3 {
+        width: 100%;
+        height: 30vh;
+        background: url(img/92338841aac5d1c8816e97af6e5df110.jpeg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: bottom;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 40px;
+      }
+      .box3 p {
+        height: 25px;
+        line-height: 25px;
+        color: snow;
+        opacity: 0.7;
+      }
+
+      @media screen and (max-width: 1080px) {
+        .box21 .img {
+          width: 300px;
+          height: 160px;
+        }
+      }
+
+      @media screen and (max-width: 908px) {
+        .box2 {
+          width: 100%;
+        }
+      }
+
+      @media screen and (max-width: 698px) {
+        .box21 .img {
+          width: 200px;
+          height: 120px;
+        }
+      }
+      .img_xs {
+        width: 80%;
+        margin: 0px auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .img_xp {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+      }
+      .quash {
+        width: 30px;
+        height: 30px;
+        background: url(img/取消.png) no-repeat center;
+        background-size: cover;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+      .img_xs img {
+        display: block;
+        width: 60%;
+        height: auto;
+        margin: 0px auto;
+      }
+      html {
+        overflow-y: initial;
+      }
+      @media (min-width: 1200px) {
+        .img_xs img {
+          display: block;
+          width: 40%;
+          height: auto;
+          margin: 0px auto;
+        }
+      }
+      .zuiho {
+        width: 400px;
+        height: 400px;
+        position: fixed;
+        z-index: 8;
+        overflow: hidden;
+        display: none;
+      }
+      .zuiho img {
+        display: block;
+        position: absolute;
+        top: -1000px;
+        left: -1000px;
+      }
+      .dw {
+        position: absolute;
+        z-index: 7;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="zuiho">
+      <img src="img/pexels-maksim-romashkin-10304563.jpg" alt="" />
+    </div>
+    <div class="da_bj"></div>
+    <div class="imgx">
+      <div class="img_xp">
+        <div class="quash"></div>
+        <div class="img_xs"><img src="" alt="" /></div>
+      </div>
+    </div>
+    <div class="nav2">
+      <h1>HXW</h1>
+      <ul class="na">
+        <li class="na1">
+          <div class="na_1 na_1b"></div>
+          <a href="搜索.html">搜索</a>
+        </li>
+        <li class="na1">
+          <div class="na_1 na_2"></div>
+          <a href="首页.html">首页</a>
+        </li>
+        <li class="na1">
+          <div class="na_1 na_3"></div>
+          <a href="文档.html">归档</a>
+        </li>
+        <li class="na1">
+          <div class="na_1 na_4"></div>
+          <a href="音乐.html">音乐</a>
+        </li>
+        <li class="na1">
+          <div class="na_1 na_7"></div>
+          <a href="图片.html">图片</a>
+        </li>
+        <li class="na1">
+          <div class="na_1 na_8"></div>
+          <a href="个人中心.html">个人中心</a>
+        </li>
+      </ul>
+
+      <div class="bugger">
+        <div class="bugger_top"></div>
+        <div class="bugger_center"></div>
+        <div class="bugger_bottom"></div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box1">
+        <h2>MY PICTRUE</h2>
+        <ul class="carousel_1">
+          <li class="img1"></li>
+          <li class="img2"></li>
+          <li class="img3"></li>
+          <li class="img4"></li>
+          <li class="img5"></li>
+        </ul>
+        <ul class="carousel_2">
+          <li class="li1 b_color"></li>
+          <li class="li1"></li>
+          <li class="li1"></li>
+          <li class="li1"></li>
+          <li class="li1"></li>
+        </ul>
+      </div>
+      <div class="box2">
+        <h2>我的图片</h2>
+        <div class="box21">
+          <div class="img">
+            <div class="zh"></div>
+            <div class="zh1"></div>
+            <img src="img/pexels-amine-m'siouri-2108845.jpg" alt="" />
+          </div>
+          <div class="img">
+            <div class="zh"></div>
+            <div class="zh1"></div>
+            <img src="img/pexels-brady-knoll-5662927.jpg" alt="" />
+          </div>
+          <div class="img">
+            <div class="zh"></div>
+            <div class="zh1"></div>
+            <img src="img/pexels-guillaume-meurice-1591447.jpg" alt="" />
+          </div>
+          <div class="img">
+            <div class="zh"></div>
+            <div class="zh1"></div>
+            <img src="img/pexels-iryna-kostsenich-724712.jpg" alt="" />
+          </div>
+          <div class="img">
+            <div class="zh"></div>
+            <div class="zh1"></div>
+            <img src="img/pexels-jason-gauthier-9866389.jpg" alt="" />
+          </div>
+          <div class="img">
+            <div class="zh"></div>
+            <div class="zh1"></div>
+            <img src="img/pexels-kourtney-gundersen-9864765.jpg" alt="" />
+          </div>
+          <div class="img">
+            <div class="dw"></div>
+            <div class="zh"></div>
+            <div class="zh1"></div>
+            <img src="img/pexels-maksim-romashkin-10304563.jpg" alt="" />
+          </div>
+          <div class="img">
+            <div class="zh"></div>
+            <div class="zh1"></div>
+            <img src="img/pexels-rakicevic-nenad-1274260.jpg" alt="" />
+          </div>
+          <div class="img">
+            <div class="zh"></div>
+            <div class="zh1"></div>
+            <img src="img/pexels-sam-kolder-2387866.jpg" alt="" />
+          </div>
+          <div class="img">
+            <div class="zh"></div>
+            <div class="zh1"></div>
+            <img src="img/pexels-stein-egil-liland-9391321.jpg" alt="" />
+          </div>
+          <div class="img">
+            <div class="zh"></div>
+            <div class="zh1"></div>
+            <img src="img/pexels-tobias-bjørkli-2360684.jpg" alt="" />
+          </div>
+          <div class="img">
+            <div class="zh"></div>
+            <div class="zh1"></div>
+            <img src="img/pexels-volker-thimm-9962707.jpg" alt="" />
+          </div>
+        </div>
+
+        <h2>图库</h2>
+        <div class="box22">
+          <div class="k_img"><img src="img/方舟21.webp" alt="" /></div>
+          <div class="k_img"><img src="img/方舟7.webp" alt="" /></div>
+          <div class="k_img"><img src="img/方舟8.webp" alt="" /></div>
+          <div class="k_img"><img src="img/方舟9.webp" alt="" /></div>
+          <div class="k_img"><img src="img/方舟6.webp" alt="" /></div>
+          <div class="k_img"><img src="img/方舟15.webp" alt="" /></div>
+          <div class="k_img"><img src="img/方舟14.webp" alt="" /></div>
+          <div class="k_img"><img src="img/方舟10.webp" alt="" /></div>
+          <div class="k_img"><img src="img/方舟2.png" alt="" /></div>
+          <div class="k_img"><img src="img/方舟3.webp" alt="" /></div>
+          <div class="k_img"><img src="img/方舟4.webp" alt="" /></div>
+          <div class="k_img"><img src="img/方舟5.webp" alt="" /></div>
+          <div class="k_img"><img src="img/方舟17.webp" alt="" /></div>
+          <div class="k_img"><img src="img/方舟19.webp" alt="" /></div>
+        </div>
+      </div>
+      <div class="box3">
+        <p>我的文档</p>
+        <p>2021 / 11 / 16</p>
+      </div>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/图片轮播.js"></script>
+    <script type="text/javascript" src="js/图片.js"></script>
+    <script src="js/导航栏.js"></script>
+    <script src="js/图片2.js"></script>
+    <script src="js/给文字加边框及变色.js"></script>
+    <script src="js/遮罩图片.js"></script>
+    <script src="js/图片放大.js"></script>
+  </body>
+</html>

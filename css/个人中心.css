@@ -1,0 +1,130 @@
+.quan {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.quan::after {
+  position: absolute;
+  content: "";
+  width: 80%;
+  height: 2px;
+  background-color: #e5e8ea;
+  opacity: 0.6;
+}
+
+.tou_x {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  margin-right: 5px;
+}
+
+.tou_x0 {
+  background-image: url(../img/OIP-C.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.P_content {
+  width: calc(100% - 65px);
+}
+.name {
+  font-size: 15px;
+  font-weight: 600;
+  height: 20px;
+  line-height: 20px;
+  color: rgba(32, 32, 32, 0.8);
+}
+.nei {
+  width: calc(100% - 65px);
+  margin-bottom: 5px;
+  color: rgba(255, 255, 230, 0.8);
+}
+.dat {
+  font-size: 14px;
+  font-weight: 600;
+  height: 20px;
+  line-height: 20px;
+  color: rgba(83, 83, 83, 0.7);
+}
+
+.banner {
+  position: relative;
+  height: 230px;
+  --percentage: 0.5;
+}
+.banner .view,
+.banner .tree {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.banner img,
+.banner video {
+  display: block;
+  position: absolute;
+  width: 130%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner .tree {
+  transform: translateX(calc(var(--percentage) * 100px));
+  filter: blur(3px);
+}
+
+.banner .view {
+  transform: translateX(calc(var(--percentage) * 100px));
+}
+
+.banner .morning {
+  z-index: 10;
+  opacity: calc(1 - (var(--percentage) - 0.25) / 0.25);
+}
+.banner .afternoon {
+  z-index: 5;
+  opacity: calc(1 - (var(--percentage) - 0.5) / 0.5);
+}
+
+.banner .tree,
+.banner .view,
+.banner .morning,
+.banner .afternoon {
+  transition: 0.2s all ease-in;
+}
+
+.banner.moving .tree,
+.banner.moving .view,
+.banner.moving .morning,
+.banner.moving .afternoon {
+  transition: none;
+}
+
+.beader .window-cover {
+  opacity: calc((var(--percentage) - 0.9) / 0.1);
+}
+
+.box_3 {
+  width: 1200px;
+  height: 30vh;
+  margin: 30px auto 0px auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #e5e8ea;
+  opacity: 0.9;
+  text-shadow: 6px 6px 20px rgba(0, 0, 0, 0.9);
+}
+.box_3 p {
+  height: 25px;
+  line-height: 25px;
+}

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/导航栏.css" />
+    <style>
+      * {
+        padding: 0px;
+        margin: 0px;
+      }
+      html {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+      }
+      .da_bj {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        z-index: -5;
+        background-image: url(img/pexels-guillaume-meurice-1591447.jpg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      .box_b {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+      .box {
+        width: 550px;
+        margin: 25vh auto 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+      .time {
+        width: 550px;
+        height: 80px;
+        margin-bottom: 10px;
+        text-align: center;
+        font-size: 4em;
+        font-weight: 400;
+        color: seashell;
+      }
+      .box1 {
+        width: 500px;
+        height: 45px;
+
+        display: flex;
+        align-items: center;
+        padding-bottom: 10px;
+        opacity: 0.7;
+      }
+      input {
+        width: 500px;
+        height: 45px;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        text-indent: 15px;
+      }
+      .box input:hover {
+        box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
+      }
+      .search {
+        width: 50px;
+        height: 45px;
+        background: white;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .search img {
+        display: block;
+        width: 70%;
+      }
+      .box2 {
+        width: 70px;
+        height: 70px;
+        background: rgba(0, 0, 0, 0.4);
+        box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
+        position: absolute;
+        bottom: 100px;
+        border-radius: 10px;
+        transition: 0.8s;
+      }
+      .box2:hover {
+        width: 350px;
+        height: 240px;
+        background: rgba(0, 0, 0, 0.2);
+        box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
+        position: absolute;
+        bottom: 100px;
+        border-radius: 10px;
+      }
+      .row {
+        display: grid;
+        grid-template-rows: repeat(4, 87px);
+        grid-template-columns: repeat(4, 60px);
+        place-content: space-between space-between;
+        margin: 20px;
+      }
+      .col {
+        text-align: center;
+        transform: scale(0);
+        transition: 0.4s ease-in-out;
+      }
+      .col .bgImg {
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      .col .bgImg img {
+        width: 100%;
+      }
+      .col p {
+        color: black;
+        font-size: 12px;
+      }
+      .big-Img {
+        width: 710px;
+        height: 550px;
+        background-color: whitesmoke;
+        position: absolute;
+        top: 110px;
+        padding: 13px;
+        overflow-y: scroll;
+        border-radius: 8px;
+        display: none;
+        z-index: 50;
+        box-shadow: 5px 10px 20px rgb(70, 69, 69);
+      }
+      .big-Img .bg-container {
+        width: 680px;
+        margin: 20px auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .big-Img .bg-container .bg-c {
+        width: 314px;
+        height: 175px;
+        margin-bottom: 5px;
+        overflow: hidden;
+        border-radius: 10px;
+      }
+      .big-Img .bg-container .bg-c img {
+        display: block;
+        width: 100%;
+      }
+      .im {
+        width: 18px;
+        height: 18px;
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        cursor: pointer;
+      }
+      .switch {
+        width: 710px;
+        height: 550px;
+        background: whitesmoke;
+        position: absolute;
+        top: 110px;
+        padding: 13px;
+        overflow-y: scroll;
+        border-radius: 8px;
+        display: none;
+        z-index: 50;
+        box-shadow: 5px 10px 20px rgb(70, 69, 69);
+      }
+      .switch .switch-con {
+        width: 680px;
+        height: 480px;
+        margin: 20px auto;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .switch-con .souImg {
+        width: 220px;
+        height: 480px;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        transition: 0.3s ease-in-out;
+      }
+      .switch-con .souImg img {
+        display: block;
+        position: relative;
+        width: 480%;
+        right: 150px;
+        transition: 0.3s ease-in-out;
+      }
+      .switch-con .souImg:hover {
+        transform: scale(1.05);
+      }
+      .switch-con .souImg img:hover {
+        transform: scale(1.1);
+      }
+      .switch-con .souImg h2 {
+        position: absolute;
+        top: 200px;
+        left: 85px;
+        color: whitesmoke;
+      }
+
+      .h1_ys {
+        display: block;
+        font-size: 40px;
+        text-align: center;
+        height: 80px;
+        line-height: 60px;
+        color: snow;
+        opacity: 0.8;
+      }
+      .date {
+        position: absolute;
+        z-index: 20;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        right: 0;
+        padding-left: 30px;
+        top: 60vh;
+        border-radius: 7px 0px 0px 7px;
+        transform: translateX(320px);
+        transition: 0.7s ease-in-out;
+      }
+
+      .date .month,
+      .date .year,
+      .date .day {
+        width: 100px;
+        display: flex;
+        flex-direction: column;
+        margin: 0px 5px;
+        transform: translateX(340px);
+        transition: ease-in-out;
+      }
+      @keyframes anme1 {
+        from {
+          transform: translateX(0px);
+          opacity: 1;
+        }
+        to {
+          transform: translateX(340px);
+          opacity: 0;
+        }
+      }
+      @keyframes anme {
+        from {
+          transform: translateX(340px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0px);
+          opacity: 1;
+        }
+      }
+      .date .year .year1,
+      .date .month .month2,
+      .date .day .day3 {
+        width: 100px;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 2em;
+      }
+      .date .year .year1 {
+        background-color: #2196f3;
+      }
+      .date .month .month2 {
+        background-color: #2196f3;
+      }
+      .date .day .day3 {
+        background-color: #ff006a;
+      }
+      .date .year p,
+      .date .month p,
+      .date .day p {
+        width: 100px;
+        height: 30px;
+        letter-spacing: 0.2em;
+        font-size: 0.7em;
+        font-weight: 500;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-transform: uppercase; /* 改变字母大小写 */
+      }
+      .date .year p {
+        background-color: #127fd6;
+      }
+      .date .month p {
+        background-color: #127fd6;
+      }
+      .date .day p {
+        background-color: #ec0062;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav2">
+      <h1>HXW</h1>
+      <ul class="na">
+        <li class="na1">
+          <div class="na_1 na_1b"></div>
+          <a href="搜索.html">搜索</a>
+        </li>
+        <li class="na1">
+          <div class="na_1 na_2"></div>
+          <a href="首页.html">首页</a>
+        </li>
+        <li class="na1">
+          <div class="na_1 na_3"></div>
+          <a href="文档.html">归档</a>
+        </li>
+        <li class="na1">
+          <div class="na_1 na_4"></div>
+          <a href="音乐.html">音乐</a>
+        </li>
+        <li class="na1">
+          <div class="na_1 na_7"></div>
+          <a href="图片.html">图片</a>
+        </li>
+        <li class="na1">
+          <div class="na_1 na_8"></div>
+          <a href="个人中心.html">个人中心</a>
+        </li>
+      </ul>
+
+      <div class="bugger">
+        <div class="bugger_top"></div>
+        <div class="bugger_center"></div>
+        <div class="bugger_bottom"></div>
+      </div>
+    </div>
+    <div class="date">
+      <div class="year">
+        <div class="year1"></div>
+        <p>Year</p>
+      </div>
+      <div class="month">
+        <div class="month2"></div>
+        <div><p>Month</p></div>
+      </div>
+      <div class="day">
+        <div class="day3"></div>
+        <div><p>Day</p></div>
+      </div>
+    </div>
+    <div class="da_bj"></div>
+    <div class="box_b">
+      <div class="box">
+        <div class="time"></div>
+        <div class="box1">
+          <input type="text" value="" placeholder="Place Enter" />
+          <div class="search">
+            <img src="img/搜索.png" alt="" />
+          </div>
+        </div>
+        <div class="box2">
+          <!-- <img src="img/取消.png" alt="" class="none" style="display: none" />-->
+          <h1 class="h1_ys">w</h1>
+          <div class="row">
+            <div class="col">
+              <div class="bgImg">
+                <img
+                  src="img/0e0d29af0343e2280a0ab429baf984173b5a40f3.png@768w_768h_progressive.webp"
+                  alt=""
+                />
+              </div>
+              <p>背景图片</p>
+            </div>
+            <div class="col">
+              <div class="bgImg">
+                <img
+                  src="img/2279b74263d26734c45822f3b088e329a6dd4a04.png@768w_768h_progressive.webp"
+                  alt=""
+                />
+              </div>
+              <p>搜索引擎</p>
+            </div>
+            <div class="col">
+              <div class="bgImg">
+                <a href="https://www.bilibili.com/" target="_blank">
+                  <div class="bilibili">
+                    <img
+                      src="img/6d67ba1e040ca46b9e1f48e3ca1e093c3a46e162.png@768w_768h_progressive.webp"
+                      alt=""
+                    />
+                  </div>
+                </a>
+              </div>
+              <p>bilibili</p>
+            </div>
+          </div>
+        </div>
+        <div class="big-Img">
+          <img src="img/取消.png" alt="" class="im" />
+          <h3>我的背景图片</h3>
+          <div class="line"></div>
+          <div class="bg-container">
+            <div class="bg-c">
+              <img src="img/pexels-guillaume-meurice-1591447.jpg" alt="" />
+            </div>
+            <div class="bg-c">
+              <img src="img/pexels-tobias-bjørkli-2360684.jpg" alt="" />
+            </div>
+            <div class="bg-c">
+              <img src="img/5df9cec9bd50695366dee67fd613306b.jpeg" alt="" />
+            </div>
+            <div class="bg-c">
+              <img src="img/fc6af36107491dbf41011cd331f7f1ed.jpeg" alt="" />
+            </div>
+            <div class="bg-c">
+              <img src="img/c3dff822a05c2f644a2a6beabd00edd8.jpg" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <div class="switch">
+          <img src="img/取消.png" alt="" class="im" />
+          <h3>搜索引擎</h3>
+          <div class="line"></div>
+          <div class="switch-con">
+            <div class="souImg sou1">
+              <img
+                src="img/Screenshot_20201020_224559_tv.danmaku.bili.jpg"
+                alt=""
+              />
+              <h2>bing</h2>
+            </div>
+            <div class="souImg sou2">
+              <img
+                src="img/Screenshot_20201020_224637_tv.danmaku.bili.jpg"
+                alt=""
+              />
+              <h2>百度</h2>
+            </div>
+            <div class="souImg sou3">
+              <img
+                src="img/Screenshot_20201020_225014_tv.danmaku.bili.jpg"
+                alt=""
+              />
+              <h2>搜狗</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script>
+      // 给小黑块添加滑动效果
+      function transform() {
+        var date = document.querySelector(".date");
+        var b = 1;
+        date.onclick = function () {
+          if (b == 1) {
+            date.style.transform = "translateX(0px)";
+            for (let a = 0; a < date.children.length; a++) {
+              // 	if(date.children[a].style.animation){
+              // 	date.children[a].style.animation="";
+              // }else{
+              date.children[
+                a
+              ].style.animation = `0.3s ease-in-out anme forwards ${
+                a * 0.1 + 0.4
+              }s`;
+              // }
+            }
+            b = 0;
+          } else {
+            date.style.transform = "translateX(320px)";
+            for (let c = 2; c >= 0; c--) {
+              // 	if(date.children[a].style.animation){
+              // 	date.children[a].style.animation="";
+              // }else{
+              date.children[
+                c
+              ].style.animation = `0.6s ease-in-out anme1 forwards `;
+              // }
+            }
+            b = 1;
+          }
+        };
+      }
+      transform();
+      //切换页面背景
+      function bg() {
+        var da_bj = document.querySelector(".da_bj");
+        //var html = $("html").css("backgroundImage");
+        // var a = html.split("(")[1].split(")")[0];
+        // alert(a);
+        var bg_img = document.querySelectorAll(".bg-container img");
+
+        for (let i = 0; i < bg_img.length; i++) {
+          bg_img[i].onclick = function () {
+            da_bj.style.backgroundImage = "url('" + bg_img[i].src + "')";
+          };
+        }
+      }
+      bg();
+      //切换网站功能
+      function websit() {
+        var bing = document.querySelector(".sou1");
+        var baidu = document.querySelector(".sou2");
+        var sougou = document.querySelector(".sou3");
+        var search = document.querySelector(".search");
+        var content = document.querySelector("input");
+        var a = "https://cn.bing.com/search?q=";
+        baidu.onclick = function () {
+          a = "https://www.baidu.com/s?ie=UTF-8&wd=";
+          alert("切换成功！");
+        };
+
+        sougou.onclick = function () {
+          a = "https://www.sogou.com/web?query=";
+          alert("切换成功！");
+        };
+        search.onclick = function () {
+          let ovalue = content.value;
+          window.open(a + ovalue);
+        };
+      }
+      websit();
+      //搜索小盒子点击添加弹出框
+      function bgImg() {
+        var big_Img = document.querySelector(".big-Img");
+        var fork = document.querySelector(".big-Img img");
+        var a = document.querySelectorAll(".bgImg");
+        var swich = document.querySelector(".switch");
+        var swich_fork = document.querySelector(".switch img");
+        a[0].onclick = function () {
+          big_Img.style.display = "block";
+        };
+        fork.onclick = function () {
+          big_Img.style.display = "none";
+        };
+
+        a[1].onclick = function () {
+          swich.style.display = "block";
+        };
+        swich_fork.onclick = function () {
+          swich.style.display = "none";
+        };
+      }
+      bgImg();
+      //三个小盒子显示
+      function box() {
+        var mos_hover = document.querySelector(".box2");
+        var cols = document.querySelectorAll(".col");
+        //鼠标移入时候显示三个小盒子
+        mos_hover.onmouseover = function () {
+          for (let a = 0; a < cols.length; a++) {
+            cols[a].style.opacity = "1";
+            cols[a].style.transform = "scale(1)";
+          }
+        };
+        mos_hover.onmouseout = function () {
+          for (let a = 0; a < cols.length; a++) {
+            cols[a].style.opacity = "0";
+            cols[a].style.transform = "scale(0)";
+          }
+        };
+      }
+      box();
+      // 时间获取
+      function time() {
+        var date = new Date();
+        year = date.getFullYear();
+        month = date.getMonth() + 1;
+        day = date.getDate();
+        hours = date.getHours();
+        minutes = date.getMinutes();
+        seconds = date.getSeconds();
+        document.querySelector(".time").innerHTML = hours + ":" + minutes;
+        document.querySelector(".year1").innerHTML = year;
+        document.querySelector(".month2").innerHTML = month;
+        document.querySelector(".day3").innerHTML = day;
+      }
+
+      setInterval("time()", 1000);
+    </script>
+  </body>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="js/导航栏.js"></script>
+  <script src="js/给文字加边框及变色.js"></script>
+</html>

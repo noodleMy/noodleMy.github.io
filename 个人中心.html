@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <link rel="stylesheet" href="css/导航栏.css" />
+    <link rel="stylesheet" href="css/个人中心.css" />
+    <!-- <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    /> -->
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      html {
+        overflow-x: hidden;
+      }
+
+      .bei_j {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background-color: #00d9ff;
+        z-index: -10;
+      }
+
+      .banner-shapes .banner-shapes__body {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        background-position: center 24%;
+        background-size: cover;
+      }
+
+      figure {
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 40px;
+        margin-inline-end: 40px;
+      }
+
+      .banner-shapes {
+        position: absolute;
+        width: 3174px;
+        height: 2624px;
+        left: 50%;
+        margin-left: -1587px;
+        top: 50%;
+        margin-top: -940px;
+        z-index: 0;
+      }
+      .banner-shapes .image1 {
+        animation: spin2 202s linear infinite;
+      }
+      .banner-shapes .shape-block {
+        position: absolute;
+        width: 848px;
+        height: 848px;
+        left: 0;
+        top: 0;
+        border-radius: 4rem;
+        background: linear-gradient(to bottom right, #183de7, #48cffe 80%);
+        z-index: 2;
+      }
+
+      @keyframes spin2 {
+        100% {
+          transform: rotate(-1turn);
+          transform-origin: 50% 50%;
+        }
+      }
+      .banner-shapes .shape-diamond {
+        position: absolute;
+        width: 1213px;
+        height: 1213px;
+        left: 215px;
+        top: 190px;
+        border-radius: 4rem;
+        background-color: #5322c0;
+        background: linear-gradient(180deg, #5322c0, #ce71e5);
+        transform: rotate(45deg);
+        z-index: 3;
+      }
+      .banner-shapes .image2 {
+        animation: spin1 481s linear infinite;
+      }
+      @keyframes spin1 {
+        100% {
+          transform: rotate(-1turn);
+          transform-origin: 50% 50%;
+        }
+      }
+
+      .banner-shapes .image3 {
+        animation: spin1 502s linear infinite;
+      }
+
+      .banner-shapes .shape-leaf {
+        position: absolute;
+        width: 930px;
+        height: 930px;
+        left: 1600px;
+        top: 550px;
+        border-top-left-radius: 40rem;
+        border-top-right-radius: 4rem;
+        border-bottom-right-radius: 40rem;
+        border-bottom-left-radius: 4rem;
+        background: #0ff;
+        z-index: 2;
+      }
+
+      .banner-shapes .shape {
+        opacity: 0.6;
+      }
+
+      .banner-shapes .shape-small-circle {
+        position: absolute;
+        width: 864px;
+        height: 864px;
+        right: 478px;
+        top: 336px;
+        background-color: #0db54c;
+        background: linear-gradient(90deg, #0db54c, #00697b 40%);
+        z-index: 0;
+      }
+
+      .banner-shapes .shape-big-circle {
+        position: absolute;
+        width: 1664px;
+        height: 1664px;
+        right: 811px;
+        top: 956px;
+        border-radius: 50%;
+        background-color: #0db54c;
+        background: linear-gradient(90deg, #0db54c, #00697b 80%);
+        z-index: 0;
+      }
+
+      .banner-shapes .image4 {
+        animation: spin1 824s linear infinite;
+      }
+      .banner-shapes .shape-triangle {
+        position: absolute;
+        width: 1374px;
+        height: 1184px;
+        right: 0;
+        bottom: 445px;
+        background-color: #f76b71;
+        -webkit-clip-path: polygon(0 0, 50% 100%, 100% 0);
+        clip-path: polygon(0 0, 50% 100%, 100% 0);
+        background: linear-gradient(90deg, #f76b71, #a41058);
+        z-index: 1;
+      }
+
+      .box {
+        width: 1200px;
+        margin: 0px auto;
+      }
+
+      .box1 {
+        width: 1200px;
+        height: 300px;
+        margin-bottom: 10px;
+      }
+      .box11 {
+        width: 1200px;
+        height: 230px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        box-shadow: 10px 5px 20px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .box111 {
+        width: calc(100% - 40px);
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        margin: 10px auto;
+      }
+      /* 	  .box111 .Nickname{
+      		  display: flex;
+      		  flex-direction: column;
+      		  width: 280px;
+      		  align-items: center;
+      	  } */
+      .box111 .Nickname > h2 {
+        width: 100px;
+        font-size: 30px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+      .head_sculpture {
+        width: 100px;
+        height: 100px;
+        border-radius: 60px;
+        background-image: url(img/Cache_-75f02e1cfd35a250..jpg);
+        background-position: center;
+        background-size: 150%;
+        background-repeat: no-repeat;
+      }
+      .Nickname {
+        height: 100px;
+        text-align: center;
+        display: flex;
+        justify-content: end;
+        align-items: flex-end;
+      }
+
+      .account {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+      }
+      .account button {
+        padding: 10px 20px;
+        background-color: #008cba;
+        border: none;
+        outline: none;
+        border-radius: 8px;
+        font-size: 16px;
+        color: snow;
+        cursor: pointer;
+        opacity: 0.8;
+      }
+      .account button:nth-child(1):hover {
+        box-shadow: 0px 2px 15px rgba(75, 149, 245, 0.63);
+      }
+      .comment {
+        width: 80%;
+        margin: 10px auto;
+      }
+      .comment p:nth-child(1) {
+        text-align: center;
+        color: #e5e8ea;
+        opacity: 0.9;
+        text-shadow: 6px 6px 20px rgba(0, 0, 0, 0.9);
+        font-size: 20px;
+        margin-bottom: 5px;
+      }
+      .comment div:nth-child(2) {
+        width: 100%;
+        height: 170px;
+        color: #e5e8ea;
+        opacity: 0.9;
+        text-shadow: 6px 6px 20px rgba(0, 0, 0, 0.9);
+        font-size: 17px;
+        background-color: rgba(255, 255, 255, 0.3);
+        text-indent: 2em;
+      }
+      .box12 {
+        width: 1200px;
+        height: 70px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        box-shadow: 10px 5px 20px rgba(0, 0, 0, 0.4);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .box121 ul,
+      .box122 ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+        margin: 0px 20px;
+      }
+      .box121 ul li {
+        margin-left: 15px;
+        line-height: 40px;
+        text-align: center;
+        transition: 0.6s ease-in-out;
+        position: relative;
+      }
+      .box121 ul li::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 10px;
+        height: 10px;
+        transition: 0.5s;
+        border-top: 2px solid rgb(247, 107, 113);
+        border-left: 2px solid #f76b71;
+      }
+
+      .box121 ul li::after {
+        content: "";
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+
+        height: 10px;
+        width: 10px;
+        transition: 0.5s;
+        border-bottom: 2px solid #f76b71;
+        border-right: 2px solid #f76b71;
+      }
+      .box121 ul a {
+        position: relative;
+        z-index: 5;
+        padding: 5px 20px;
+        text-decoration: none;
+        color: #e5e8ea;
+        opacity: 0.9;
+        cursor: pointer;
+        text-shadow: 6px 6px 20px rgba(0, 0, 0, 0.9);
+      }
+      .box122 ul li {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-right: 15px;
+        color: #e5e8ea;
+        opacity: 0.9;
+        text-shadow: 6px 6px 20px rgba(0, 0, 0, 0.9);
+      }
+      .box_1 {
+        width: 1200px;
+        height: 800px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .box2 {
+        width: 800px;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.1); /* 玻璃效果 */
+        box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+        margin-right: 10px;
+      }
+
+      .box3 {
+        width: 390px;
+        height: 400px;
+        position: relative;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.1); /* 玻璃效果 */
+        box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+      }
+
+      .box2 h2 {
+        text-align: center;
+        height: 60px;
+        line-height: 60px;
+        color: #e5e8ea;
+        opacity: 0.9;
+        text-shadow: 6px 6px 20px rgba(0, 0, 0, 0.9);
+      }
+
+      .box2 .box_li ul {
+        list-style: none;
+        width: 85%;
+        margin: 0px auto;
+      }
+
+      .box_li ul li {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      .box_ye {
+        width: 80%;
+        margin: 15px auto;
+      }
+      .box_ye ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+      }
+      .box_ye ul li {
+        width: 20px;
+        height: 20px;
+        border: 1px solid #e5e8ea;
+        margin: 0px 2px;
+        text-align: center;
+        cursor: pointer;
+        color: #e5e8ea;
+        opacity: 0.9;
+        text-shadow: 6px 6px 20px rgba(0, 0, 0, 0.9);
+      }
+      .box_text {
+        width: 72%;
+        margin: 10px auto;
+      }
+
+      .box_input {
+        width: 100%;
+        text-align: center;
+      }
+      .box_input input {
+        width: 300px;
+        height: 36px;
+        background-color: rgb(212, 143, 102);
+        font-size: 20px;
+        font-weight: 500;
+        border: none;
+        color: #e5e8ea;
+        opacity: 0.9;
+        text-shadow: 6px 6px 20px rgba(0, 0, 0, 0.9);
+        box-shadow: 10px 5px 20px rgba(0, 0, 0, 0.4);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bei_j">
+      <figure class="banner-shapes">
+        <div class="banner-shapes__body">
+          <div class="shape shape-block image1"></div>
+          <div class="shape shape-diamond image2"></div>
+          <div class="shape shape-leaf image3"></div>
+          <div class="shape shape-small-circle"></div>
+          <div class="shape shape-big-circle"></div>
+          <div class="shape shape-triangle image4"></div>
+        </div>
+      </figure>
+    </div>
+    <div class="nav2">
+      <h1>HXW</h1>
+      <ul class="na">
+        <li class="na1">
+          <div class="na_1 na_1b"></div>
+          <a href="搜索.html">搜索</a>
+        </li>
+        <li class="na1">
+          <div class="na_1 na_2"></div>
+          <a href="首页.html">首页</a>
+        </li>
+        <li class="na1">
+          <div class="na_1 na_3"></div>
+          <a href="文档.html">归档</a>
+        </li>
+        <li class="na1">
+          <div class="na_1 na_4"></div>
+          <a href="音乐.html">音乐</a>
+        </li>
+        <li class="na1">
+          <div class="na_1 na_7"></div>
+          <a href="图片.html">图片</a>
+        </li>
+        <li class="na1">
+          <div class="na_1 na_8"></div>
+          <a href="个人中心.html">个人中心</a>
+        </li>
+      </ul>
+
+      <div class="bugger">
+        <div class="bugger_top"></div>
+        <div class="bugger_center"></div>
+        <div class="bugger_bottom"></div>
+      </div>
+    </div>
+    <div class="box">
+      <!-- 第一大块 -->
+      <div class="box1">
+        <!-- 第一大块的第一小块 -->
+        <div class="box11">
+          <div class="banner">
+            <div class="view">
+              <img
+                src="img/bilibili-winter-view-1.webp"
+                class="morning"
+                alt=""
+              />
+              <img
+                src="img/bilibili-winter-view-2.webp"
+                class="afternoon"
+                alt=""
+              />
+              <video autoplay loop muted class="evening">
+                <source src="img/bilibili-winter-view-3.webm" />
+              </video>
+              <img
+                src="img/bilibili-winter-view-3-snow.png"
+                class="window-cover"
+                alt=""
+              />
+            </div>
+            <div class="tree">
+              <img
+                src="img/bilibili-winter-tree-1.webp"
+                class="morning"
+                alt=""
+              />
+              <img
+                src="img/bilibili-winter-tree-2.webp"
+                class="afternoon"
+                alt=""
+              />
+              <img
+                src="img/bilibili-winter-tree-3.webp"
+                class="evening"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+        <!-- 第一大块的第二小块 -->
+        <div class="box12">
+          <div class="box121">
+            <ul>
+              <li class="lib">
+                <a href="搜索.html">搜索</a>
+              </li>
+              <li class="lib">
+                <a href="首页.html">首页</a>
+              </li>
+              <li class="lib">
+                <a href="文档.html">文档</a>
+              </li>
+              <li class="lib">
+                <a href="音乐.html">音乐</a>
+              </li>
+              <li class="lib">
+                <a href="图片.html">图片</a>
+              </li>
+              <li class="lib">
+                <a href="个人中心.html">个人中心</a>
+              </li>
+            </ul>
+          </div>
+          <div class="box122">
+            <ul>
+              <li>
+                <div>关注数</div>
+                <div>0</div>
+              </li>
+              <li>
+                <div>粉丝数</div>
+                <div>0</div>
+              </li>
+              <li>
+                <div>获赞数</div>
+                <div>0</div>
+              </li>
+              <li>
+                <div>阅读数</div>
+                <div>0</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="box_1">
+        <!-- 第二大块的,第一小块 -->
+        <div class="box2">
+          <h2>留言</h2>
+          <div class="box_li">
+            <ul>
+              <li>
+                <div class="quan">
+                  <div class="tou_x tou_x0"></div>
+                  <div class="P_content">
+                    <div class="name">小皮</div>
+                    <div class="nei">你好</div>
+                    <div class="dat">2021年12月5号</div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="quan">
+                  <div class="tou_x tou_x1"></div>
+                  <div class="P_content">
+                    <div class="name"></div>
+                    <div class="nei"></div>
+                    <div class="dat"></div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="quan">
+                  <div class="tou_x tou_x2"></div>
+                  <div class="P_content">
+                    <div class="name"></div>
+                    <div class="nei"></div>
+                    <div class="dat"></div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="quan">
+                  <div class="tou_x tou_x3"></div>
+                  <div class="P_content">
+                    <div class="name"></div>
+                    <div class="nei"></div>
+                    <div class="dat"></div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="quan">
+                  <div class="tou_x tou_x4"></div>
+                  <div class="P_content">
+                    <div class="name"></div>
+                    <div class="nei"></div>
+                    <div class="dat"></div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="quan">
+                  <div class="tou_x tou_x5"></div>
+                  <div class="P_content">
+                    <div class="name"></div>
+                    <div class="nei"></div>
+                    <div class="dat"></div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="box_ye">
+            <ul>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+            </ul>
+          </div>
+          <div class="box_text">
+            <textarea
+              rows="12"
+              cols="80"
+              style="outline: none; background: snow"
+            >
+评论点什么</textarea
+            >
+          </div>
+          <div class="box_input">
+            <input type="button" value="提交" />
+          </div>
+        </div>
+        <div class="box3">
+          <div class="box111">
+            <div class="head_sculpture"></div>
+            <div class="Nickname">
+              <h2>HXW</h2>
+            </div>
+          </div>
+          <div class="comment">
+            <p>个人评论</p>
+            <div>
+              One gun isn't enough. I want eight, but when can I get one
+            </div>
+          </div>
+          <div class="account">
+            <div>
+              <a href=""
+                ><button type="button" class="btn btn-primary">
+                  退出登录
+                </button></a
+              >
+            </div>
+            <div>
+              <a href=""
+                ><button type="button" class="btn btn-primary">
+                  登录账号
+                </button></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="box_3">
+      <p>个人中心</p>
+      <p>2021 / 11 / 16</p>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/个人中心视差.js"></script>
+    <script src="js/导航栏.js"></script>
+    <script src="js/个人中心.js"></script>
+    <script src="js/给文字加边框及变色.js"></script>
+  </body>
+</html>
